@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ADHC - Tanggap Bencana Yayasan</title>
+    
+    <meta name="theme-color" content="#F59E0B">
+    <meta name="description" content="Annajah Disaster and Humanity Center- Pusat Aksi Tanggap Bencana & Kemanusiaan Yayasan PENKESOMA ALMEY ANNAJAH.">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/warning-shield.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        adhc: {
+                            DEFAULT: '#F59E0B', // Kuning/Amber Utama ADHC
+                            dark: '#D97706',    // Amber Gelap / Hover
+                            light: '#FEF3C7',   // Amber Soft / Background Tipis
+                            text: '#92400E'     // Warna Teks Accent
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F7F9;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .app-card-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+        .glass-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="text-slate-800 pb-24 md:pb-8">
+
+<!-- Header App Bar -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-100">
+        <div class="max-w-md mx-auto md:max-w-4xl px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="yayasanannajah.html" class="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </a>
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center font-extrabold text-base shadow-md">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1">
+                            <h1 class="font-bold text-sm text-slate-900 leading-tight">ADHC</h1>
+                            <span class="text-[9px] font-black bg-amber-100 text-amber-800 px-1.5 py-0.2 rounded">BENCANA</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 font-medium">Annajah Disaster and Humanity Center</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol Ikon Menuju Profil ADHC -->
+            <a href="profilADHC.html" class="w-9 h-9 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-700 flex items-center justify-center transition shadow-sm" title="Profil ADHC">
+                <i class="fa-solid fa-circle-info text-sm"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto md:max-w-4xl px-4 pt-4 space-y-5">
+
+        <!-- Banner Darurat / Posko Utama -->
+        <div class="bg-gradient-to-br from-amber-500 to-amber-600 rounded-3xl p-5 text-white app-card-shadow relative overflow-hidden">
+            <i class="fa-solid fa-shield-cat absolute -right-4 -bottom-4 text-8xl opacity-15"></i>
+            <span class="bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full tracking-wider">Aksi Cepat Tanggap</span>
+            <h2 class="text-lg font-black mt-2 leading-tight">Pusat Penanggulangan Bencana & Kemanusiaan</h2>
+            <p class="text-xs text-amber-100 mt-1 leading-relaxed">Siap siaga membantu koordinasi evakuasi, penyaluran logistik darurat, serta pemulihan pasca bencana</p>
+                   <div class="grid grid-cols-2 gap-2 mt-4">
+                <!-- Tombol Kas ADHC -->
+                <button onclick="openModalKasADHC()" class="bg-white text-amber-900 py-2.5 px-3 rounded-2xl text-center text-xs font-bold shadow-sm hover:bg-amber-50 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-amber-600 text-sm"></i> Kas ADHC
+                </button>
+                <!-- Tombol Donasi Darurat -->
+                <button onclick="openModalDonasiDarurat()" class="bg-amber-950/40 border border-white/20 text-white py-2.5 px-3 rounded-2xl text-center text-xs font-bold hover:bg-amber-950/60 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-hand-holding-heart text-amber-300"></i> Donasi
+                </button>
+            </div>
+
+        </div>
+        <!-- CONTAINER MENU GRID DINAMIS (Ditarik otomatis dari tab "Tombol menu ADHC") -->
+        <div id="dynamic-adhc-menu-container" class="space-y-4">
+            <div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-4">
+                <div class="py-8 text-center animate-pulse text-xs text-slate-400 font-bold">
+                    Menyelaraskan menu ADHC...
+                </div>
+            </div>
+        </div>
+
+        <!-- Metric Quick Status -->
+        <div class="grid grid-cols-3 gap-3">
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center app-card-shadow">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Aksi Tanggap</p>
+                <p class="text-base font-black text-amber-600 mt-0.5" id="stat-aksi">--</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center app-card-shadow">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Relawan</p>
+                <p class="text-base font-black text-slate-800 mt-0.5">10 Personel</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center app-card-shadow">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Penerima Manfaat</p>
+                <p class="text-base font-black text-emerald-600 mt-0.5">100+ Jiwa</p>
+            </div>
+        </div>
+
+        <!-- Wadah Berita & Aksi ADHC (Ditarik Otomatis dari GSheet) -->
+        <div class="space-y-3">
+            <div class="flex justify-between items-center px-1">
+                <h2 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Kabar & Dokumentasi Aksi ADHC</h2>
+                <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">Real-time</span>
+            </div>
+<!-- Wadah Tempat Berita/Kabar ADHC Ditarik Otomatis Berdasarkan Kategori -->
+<div id="adhc-news-container" class="space-y-5">
+    <div class="bg-white rounded-3xl p-6 text-center text-xs text-slate-400 py-8 animate-pulse">
+        Memuat berita tanggap bencana...
+    </div>
+</div>
+
+        </div>
+<!-- Widget Pantauan Cuaca & Kebencanaan Live -->
+<div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-3 overflow-hidden">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-cloud-bolt text-amber-500 text-sm"></i>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Pantauan Cuaca & Kebencanaan Live</h3>
+        </div>
+        <!-- Tombol Bantuan untuk mereset/menutup menu jika tertutup pop-up -->
+        <span class="text-[10px] text-slate-400 italic">Geser peta untuk navigasi</span>
+    </div>
+    
+    <div class="w-full overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 p-1 relative">
+        <!-- Tinggi iframe ditingkatkan menjadi 450px agar area pop-up lebih leluasa -->
+        <iframe src="https://embed.windy.com/embed2.html?lat=-6.200&lon=106.816&zoom=5&level=surface&overlay=wind&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1" width="100%" height="450" frameborder="0" style="border:none; border-radius: 12px;"></iframe>
+    </div>
+</div>
+<!-- Widget / Kartu Info Gempa Terkini BMKG -->
+<div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-4">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs">
+                <i class="fa-solid fa-house-chimney-crack"></i>
+            </div>
+            <div>
+                <h3 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider">Info Gempa Terkini</h3>
+                <p class="text-[10px] text-slate-400">Sumber Resmi BMKG Indonesia</p>
+            </div>
+        </div>
+        <span class="text-[9px] font-black bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full animate-pulse">Live Update</span>
+    </div>
+
+    <!-- Kotak Ringkasan Informasi -->
+    <div class="bg-slate-50 border border-slate-100 p-4 rounded-2xl space-y-3">
+        <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-medium">Status Pemantauan</span>
+            <span class="font-bold text-slate-800">Magnitudo M ≥ 5.0 & Dirasakan</span>
+        </div>
+        <p class="text-xs text-slate-600 leading-relaxed">
+            Data aktivitas gempabumi termutakhir di seluruh wilayah Indonesia diperbarui secara otomatis langsung dari pusat database Badan Meteorologi, Klimatologi, dan Geofisika.
+        </p>
+    </div>
+
+    <!-- Tombol Tautan Langsung ke Pusat Data BMKG -->
+    <div class="grid grid-cols-2 gap-2">
+        <a href="https://www.bmkg.go.id/gempabumi/gempabumi-m5" target="_blank" rel="noopener noreferrer"
+           class="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold shadow-sm transition no-underline">
+            <i class="fa-solid fa-table-list text-xs"></i>
+            <span>Data Gempa M 5.0+</span>
+        </a>
+        <a href="https://www.bmkg.go.id/gempabumi/gempabumi-dirasakan" target="_blank" rel="noopener noreferrer"
+           class="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shadow-sm transition no-underline">
+            <i class="fa-solid fa-wave-square text-xs"></i>
+            <span>Gempa Dirasakan</span>
+        </a>
+    </div>
+</div>
+
+
+    </main>
+
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+            <div class="w-12 h-1 bg-slate-200 rounded-full mx-auto sm:hidden mb-2"></div>
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Script Integration -->
+    <    <!-- Script Integration -->
+    <script>
+        const ADHC_SHEET_ID = "1krBmtuDAf26mS19F6_QX6ne5kBojnOXg2_netke742E";
+
+        async function loadADHCData() {
+            const container = document.getElementById('adhc-news-container');
+            const statAksi = document.getElementById('stat-aksi');
+            if (!container) return;
+
+            container.innerHTML = `<div class="py-10 text-center animate-pulse text-[10px] font-black text-slate-400 uppercase tracking-widest">Sinkronisasi Aksi & Berita ADHC...</div>`;
+
+            try {
+                // DIUBAH: Mengambil data langsung dari tab "Berita ADHC"
+                const res = await fetch(`https://opensheet.elk.sh/${ADHC_SHEET_ID}/${encodeURIComponent("Berita ADHC")}`);
+                const data = await res.json();
+                
+                if (data && data.length > 0) {
+                    // Filter ketat khusus kategori "KABAR ADHC"
+                    const adhcItems = data.filter(item => {
+                        const cat = (item.kategori || '').trim().toUpperCase();
+                        return cat === 'KABAR ADHC';
+                    });
+
+                    if (statAksi) statAksi.innerText = adhcItems.length + " Aksi";
+
+                    if (adhcItems.length > 0) {
+                        container.innerHTML = ''; 
+                        const categories = [...new Set(adhcItems.map(item => item.kategori || 'KABAR ADHC'))];
+
+                        categories.forEach((cat) => {
+                            const items = adhcItems.filter(i => (i.kategori || 'KABAR ADHC') === cat);
+                            const catSlug = slugify(cat);
+
+                            const section = document.createElement('div');
+                            section.className = 'bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 animate-fadeIn mb-5';
+                            
+                            section.innerHTML = `
+                                <div class="flex justify-between items-center mb-4 gap-3">
+                                    <h2 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">
+                                        ${cat}
+                                    </h2>
+                                    <button onclick="toggleSearch('${catSlug}')" class="bg-slate-100 p-2 rounded-xl active:scale-95 transition-all text-slate-600 hover:bg-slate-200 shadow-sm">
+                                        <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                                    </button>
+                                </div>
+
+                                <!-- SEARCH INPUT -->
+                                <div id="search-${catSlug}" class="hidden mb-4">
+                                    <input
+                                        oninput="filterCategory('${catSlug}', this.value)"
+                                        placeholder="Cari di ${cat}..."
+                                        class="w-full px-4 py-2.5 rounded-2xl text-xs text-slate-800 placeholder-slate-400 bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
+                                    />
+                                </div>
+
+                                <div class="flex overflow-x-auto gap-4 no-scrollbar scroll-snap-x pb-2">
+                                    ${items.map(item => {
+                                        const dataString = encodeURIComponent(JSON.stringify(item));
+                                        return `
+                                        <div
+                                            onclick="openModalDetail('${dataString}')"
+                                            class="snap-item post-card flex-none w-[72vw] sm:w-72 aspect-[4/5] bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 relative active:scale-[0.97] transition-all cursor-pointer"
+                                            data-category="${catSlug}"
+                                            data-title="${(item.judul || '').toLowerCase()}"
+                                            data-content="${(item.isi || '').toLowerCase()}"
+                                        >
+                                            <img src="${item.foto}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=500'">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent flex flex-col justify-end p-4 text-white">
+                                                <p class="text-[9px] font-bold uppercase tracking-wider mb-1 text-amber-400">${item.tanggal || ''}</p>
+                                                <h3 class="text-sm font-bold leading-snug mb-1 line-clamp-2">${item.judul || ''}</h3>
+                                                <p class="text-[11px] text-slate-300 line-clamp-2 font-normal">${item.isi || ''}</p>
+                                            </div>
+                                        </div>`;
+                                    }).join('')}
+                                </div>`;
+                            container.appendChild(section);
+                        });
+                    } else {
+                        container.innerHTML = `<div class="bg-white rounded-3xl p-6 text-center text-xs text-slate-400 py-6">Belum ada pembaruan dengan kategori KABAR ADHC.</div>`;
+                    }
+                } else {
+                    container.innerHTML = `<div class="bg-white rounded-3xl p-6 text-center text-xs text-slate-400 py-6">Data berita kosong.</div>`;
+                }
+            } catch (e) {
+                console.error("Gagal memuat berita ADHC:", e);
+                container.innerHTML = `<div class="bg-white rounded-3xl p-6 text-center text-xs text-rose-500 py-6">Gagal menyinkronkan data dari Google Sheets.</div>`;
+            }
+        }
+
+        // Fungsi untuk memuat menu grid dinamis khusus tab "Tombol menu ADHC"
+        async function loadADHCMenuGrid() {
+            const container = document.getElementById('dynamic-adhc-menu-container');
+            if (!container) return;
+
+            try {
+                const res = await fetch(`https://opensheet.elk.sh/${ADHC_SHEET_ID}/${encodeURIComponent("Tombol menu ADHC")}`);
+                const menuData = await res.json();
+
+                if (menuData && menuData.length > 0) {
+                    let groupedMenu = {};
+
+                    menuData.forEach((item) => {
+                        let namaTombol = item.Tombol ? item.Tombol.toString().trim() : '';
+                        let linkUrl = item.Link ? item.Link.toString().trim() : '#';
+                        let kategori = item.Kategori ? item.Kategori.toString().trim() : 'Menu Utama';
+
+                        if (namaTombol !== '') {
+                            if (!groupedMenu[kategori]) {
+                                groupedMenu[kategori] = [];
+                            }
+                            groupedMenu[kategori].push({ 
+                                nama: namaTombol, 
+                                link: linkUrl 
+                            });
+                        }
+                    });
+
+                    if (Object.keys(groupedMenu).length > 0) {
+                        let finalHtml = '';
+
+                        for (const [groupName, items] of Object.entries(groupedMenu)) {
+                            finalHtml += `
+                                <div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-4">
+                                    <div class="flex items-center justify-between pb-1 border-b border-slate-50">
+                                        <h2 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">${groupName}</h2>
+                                        <span class="text-[10px] font-bold bg-amber-50 text-amber-600 px-2.5 py-1 rounded-full flex items-center gap-1">
+                                            <i class="fa-solid fa-layer-group"></i> ${groupName}
+                                        </span>
+                                    </div>
+
+                                    <div class="grid grid-cols-4 gap-y-5 gap-x-2 text-center pt-2">
+                            `;
+
+                            items.forEach((menuItem) => {
+                                finalHtml += `
+                                    <a href="${menuItem.link}" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center group">
+                                        <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition flex items-center justify-center text-lg mb-1.5 shadow-sm relative">
+                                            <i class="fa-solid fa-shield-halved"></i>
+                                        </div>
+                                        <span class="text-[11px] font-bold text-slate-700 leading-tight line-clamp-2">${menuItem.nama}</span>
+                                    </a>
+                                `;
+                            });
+
+                            finalHtml += `
+                                    </div>
+                                </div>
+                            `;
+                        }
+
+                        container.innerHTML = finalHtml;
+                    } else {
+                        container.innerHTML = `<div class="bg-white rounded-3xl p-5 text-center text-xs text-slate-400 py-6">Belum ada menu ADHC yang diatur.</div>`;
+                    }
+                } else {
+                    container.innerHTML = `<div class="bg-white rounded-3xl p-5 text-center text-xs text-slate-400 py-6">Data menu ADHC kosong.</div>`;
+                }
+            } catch (e) {
+                console.error("Gagal memuat menu ADHC:", e);
+                container.innerHTML = `<div class="bg-white rounded-3xl p-5 text-center text-xs text-rose-500 py-6">Gagal menyinkronkan menu dari Google Sheets.</div>`;
+            }
+        }
+
+        // Pastikan fungsi dipanggil saat halaman dimuat (bersamaan dengan loadADHCData)
+        window.addEventListener('load', () => {
+            loadADHCData();
+            loadADHCMenuGrid();
+        });
+
+        function openModalDetail(encodedData) {
+            let item;
+            try { item = JSON.parse(decodeURIComponent(encodedData)); } catch (e) { return; }
+
+            const content = document.getElementById('modal-content');
+            
+            let waButton = '';
+            if (item.whatsapp) {
+                let wa = item.whatsapp.toString().replace(/\D/g, '');
+                if (wa.startsWith('0')) wa = '62' + wa.slice(1);
+                waButton = `
+                    <a href="https://wa.me/${wa}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-emerald-600 text-white py-3 rounded-2xl font-bold text-xs uppercase shadow-md active:scale-95 transition no-underline">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Kontak Posko Lapangan
+                    </a>`;
+            }
+
+            content.innerHTML = `
+                <div class="space-y-3 text-left">
+                    <img src="${item.foto}" class="w-full h-48 object-cover rounded-2xl mb-2" onerror="this.src='https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=600'">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">${item.kategori || 'ADHC'}</span>
+                        <span class="text-[11px] text-slate-400 font-medium">${item.tanggal || ''}</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 leading-snug">${item.judul || ''}</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed whitespace-pre-line">${item.isi || ''}</p>
+                    ${waButton ? `<div class="pt-3 border-t border-slate-100">${waButton}</div>` : ''}
+                </div>
+            `;
+
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function openModalDonasiDarurat() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">Donasi Tanggap Bencana (ADHC)</h3>
+                    <p class="text-xs text-slate-500">Salurkan kepedulian Anda untuk evakuasi dan sembako darurat korban bencana.</p>
+                    
+                    <div class="bg-slate-50 p-4 rounded-2xl text-left border border-slate-100 space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-700">Bank ????</span>
+                            <span class="font-mono bg-white px-2 py-1 rounded-lg text-slate-800 border">000000000000</span>
+                        </div>
+                       
+                        <p class="text-[10px] text-slate-400 italic">a.n. ?????</p>
+                    </div>
+
+                    <button onclick="closeModal()" class="w-full py-3 bg-amber-500 text-white rounded-2xl text-xs font-bold shadow-md hover:bg-amber-600 transition">
+                        Tutup
+                    </button>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        // Fungsi Helper Pencarian, Filter & Slug
+        function toggleSearch(category) {
+            const el = document.getElementById(`search-${category}`);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        function filterCategory(category, keyword) {
+            keyword = keyword.toLowerCase();
+            document.querySelectorAll(`.post-card[data-category="${category}"]`).forEach(card => {
+                const title = card.dataset.title || '';
+                const content = card.dataset.content || '';
+                const match = title.includes(keyword) || content.includes(keyword);
+                card.style.display = match ? '' : 'none';
+            });
+        }
+
+        function slugify(text) {
+            return text.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-');
+        }
+
+                            async function openModalKasADHC() {
+            const content = document.getElementById('modal-content');
+            
+            // Render UI Modal (Tanpa informasi rekening yang dobel)
+            content.innerHTML = `
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">Laporan Kas ADHC</h3>
+                    <p class="text-xs text-slate-500">Transparansi Dana Tanggap Bencana & Kemanusiaan</p>
+                    
+                    <!-- Kotak Total Saldo Real-Time -->
+                    <div class="bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl p-5 text-white shadow-md text-left">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-amber-100">Total Saldo Kas ADHC</p>
+                        <h4 id="modal-val-adhc-total" class="text-2xl font-black mt-1 tracking-tight">Memuat...</h4>
+                    </div>
+
+                    <!-- Tautan Detail Spreadsheet Dialihkan ke Link Baru -->
+                    <a href="https://docs.google.com/spreadsheets/d/1re2CRaK1YokVfqJf3WlsaKsHoSfwH-SsmOQDCVCMnnM/edit?usp=drivesdk" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="block w-full py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded-2xl text-xs font-bold transition border border-amber-200 no-underline">
+                        <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Cek Detail Kas
+                    </a>
+                </div>
+            `;
+            
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+
+            // Ambil Data Real-Time Tetap dari Master Sheet Utama
+            try {
+                const openSheetUrl = `https://opensheet.elk.sh/${ADHC_SHEET_ID}/${encodeURIComponent("Saldo ADHC")}`;
+                const response = await fetch(openSheetUrl);
+                const data = await response.json();
+
+                const valTotalEl = document.getElementById('modal-val-adhc-total');
+                if (data && data.length > 0) {
+                    let rawValue = data[0]["Saldo ADHC"] || 0;
+                    
+                    let num = 0;
+                    if (typeof rawValue === 'number') {
+                        num = rawValue;
+                    } else {
+                        let str = String(rawValue).trim();
+                        str = str.replace(/[^0-9,-]+/g, "");
+                        str = str.replace(/\./g, "").replace(/,/g, ".");
+                        num = parseFloat(str);
+                        if (isNaN(num)) num = 0;
+                    }
+
+                    const formatIDR = (n) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(n);
+                    if (valTotalEl) valTotalEl.innerText = formatIDR(num);
+                } else {
+                    if (valTotalEl) valTotalEl.innerText = "Rp0";
+                }
+            } catch (err) {
+                console.error("Gagal memuat saldo ADHC:", err);
+                const valTotalEl = document.getElementById('modal-val-adhc-total');
+                if (valTotalEl) valTotalEl.innerText = "Gagal memuat";
+            }
+        }
+
+
+
+function openModalLapor() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="space-y-4 text-left">
+                    <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900">Lapor Kejadian Bencana</h3>
+                            <p class="text-[10px] text-slate-400">Tim ADHC akan merespons laporan Anda</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Silakan hubungi komando posko ADHC via WhatsApp dengan menyertakan: **Lokasi kejadian, foto kondisi, dan kebutuhan evakuasi darurat.**
+                    </p>
+
+                    <a href="https://wa.me/6281234567890?text=LAPOR%20BENCANA%0ANama:%20%0ALokasi:%20%0AKejadian:%20" target="_blank" class="flex items-center justify-center gap-2 w-full bg-emerald-600 text-white py-3 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md active:scale-95 transition no-underline">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Kirim Laporan via WhatsApp
+                    </a>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-backdrop').classList.add('hidden');
+        }
+
+        window.addEventListener('load', loadADHCData);
+    </script>
+
+</body>
+</html>

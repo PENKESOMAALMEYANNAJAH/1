@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lazisna - Zakat, Infaq & Sedekah Yayasan</title>
+    
+    <meta name="theme-color" content="#8E24AA">
+    <meta name="description" content="Lazisna - Layanan Zakat, Infaq, Sedekah dan Dana Sosial Keagamaan Yayasan PENKESOMA ALMEY ANNAJAH.">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/192/donation.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lazisna: {
+                            DEFAULT: '#8E24AA', // Ungu Utama Lazisna
+                            dark: '#6A1B9A',    // Ungu Gelap / Hover
+                            light: '#F3E8FF',   // Ungu Soft / Background
+                            text: '#581C87'     // Teks Accent Ungu
+                        },
+                        primary: {
+                            DEFAULT: '#0F5132'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6F7F9;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .app-card-shadow { box-shadow: 0 4px 20px rgba(142, 36, 170, 0.06); }
+        .glass-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="text-slate-800 pb-12">
+
+    <!-- Header App Bar -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-100">
+        <div class="max-w-md mx-auto md:max-w-4xl px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="w-9 h-9 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition">
+                    <i class="fa-solid fa-arrow-left text-sm"></i>
+                </a>
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-9 h-9 rounded-2xl bg-purple-600 text-white flex items-center justify-center font-extrabold text-base shadow-md">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1">
+                            <h1 class="font-bold text-sm text-slate-900 leading-tight">LAZISNA</h1>
+                            <span class="text-[9px] font-black bg-purple-100 text-purple-800 px-1.5 py-0.2 rounded">MPZ</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500 font-medium">Mitra Pengelola Zakat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol Ikon Menuju Profil Lazisna -->
+            <a href="profilLazisna.html" class="w-9 h-9 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 flex items-center justify-center transition shadow-sm" title="Profil Lazisna">
+                <i class="fa-solid fa-circle-info text-sm"></i>
+            </a>
+        </div>
+    </header>
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto md:max-w-4xl px-4 pt-4 space-y-5">
+
+        <!-- Banner Hero Lazisna -->
+        <div class="bg-gradient-to-br from-purple-700 via-purple-800 to-slate-900 rounded-3xl p-6 text-white app-card-shadow relative overflow-hidden">
+            <i class="fa-solid fa-hand-holding-heart absolute -right-4 -bottom-4 text-9xl opacity-10"></i>
+            <span class="bg-white/20 backdrop-blur-md text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider border border-white/20">Amanah & Transparan</span>
+            <h2 class="text-xl font-black mt-2 leading-tight">Lembaga Amil Zakat, Infaq & Sedekah Annajah</h2>
+            <p class="text-xs text-purple-100/90 mt-1.5 leading-relaxed max-w-xl">
+                Mitra Pengelola Zakat (MPZ) berafiliasi dengan Dompet Dhuafa di bawah naungan Yayasan PENKESOMA ALMEY ANNAJAH.
+            </p>
+            
+            <div class="grid grid-cols-2 gap-2 mt-4">
+                <button onclick="openModalRekening()" class="bg-white text-purple-900 py-2.5 px-3 rounded-2xl text-center text-xs font-bold shadow-sm hover:bg-purple-50 transition flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-purple-600 text-sm"></i> Rekening BRI ZIS
+                </button>
+                <a href="https://wa.me/6283817981879?text=Assalamu'alaikum%20Admin%20Lazisna,%20saya%20ingin%20berkonsultasi%20mengenai%20perhitungan%20zakat" target="_blank" class="bg-purple-950/40 border border-white/20 text-white py-2.5 px-3 rounded-2xl text-center text-xs font-bold hover:bg-purple-950/60 transition flex items-center justify-center gap-1.5 no-underline">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i> Konsultasi Zakat
+                </a>
+            </div>
+        </div>
+
+        <!-- Metric Pilar ZIS -->
+        <div class="grid grid-cols-3 gap-3">
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center app-card-shadow">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Mitra Resmi</p>
+                <p class="text-xs sm:text-sm font-black text-purple-600 mt-0.5">Dompet Dhuafa</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center app-card-shadow">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Penyaluran</p>
+                <p class="text-xs sm:text-sm font-black text-slate-800 mt-0.5">Syariah & Tepat</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 text-center app-card-shadow">
+                <p class="text-[10px] font-bold text-slate-400 uppercase">Laporan</p>
+                <p class="text-xs sm:text-sm font-black text-emerald-600 mt-0.5">Real-Time</p>
+            </div>
+        </div>
+
+        <!-- Menu Layanan Utama Lazisna -->
+        <div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-3">
+            <h2 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Layanan Utama Donasi</h2>
+            
+            <div class="grid grid-cols-3 gap-2.5 text-center">
+                <button onclick="openModalTransferBank()" class="flex flex-col items-center p-3 rounded-2xl bg-purple-50/60 hover:bg-purple-100 border border-purple-100 transition group active:scale-95">
+                    <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-sm font-bold mb-1.5 shadow-sm">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800">Transfer Bank</span>
+                    <span class="text-[9px] text-slate-400 leading-tight">Formulir ZIS</span>
+                </button>
+
+                <button onclick="openModalSetorTunai()" class="flex flex-col items-center p-3 rounded-2xl bg-emerald-50/60 hover:bg-emerald-100 border border-emerald-100 transition group active:scale-95">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-sm font-bold mb-1.5 shadow-sm">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800">Setor Tunai</span>
+                    <span class="text-[9px] text-slate-400 leading-tight">Lokasi Kantor</span>
+                </button>
+
+                <button onclick="openModalJemputZakat()" class="flex flex-col items-center p-3 rounded-2xl bg-amber-50/60 hover:bg-amber-100 border border-amber-100 transition group active:scale-95">
+                    <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-sm font-bold mb-1.5 shadow-sm">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800">Jemput Zakat</span>
+                    <span class="text-[9px] text-slate-400 leading-tight">Layanan Amil</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Section Laporan Keuangan Real-Time -->
+        <div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                <div>
+                    <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">Transparansi Dana ZIS</span>
+                    <h3 class="text-sm font-bold text-slate-900">Laporan Keuangan Kas</h3>
+                </div>
+                <span class="text-[9px] font-black bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">Google Sheets</span>
+            </div>
+
+            <!-- Card Total Saldo Kas -->
+            <div class="bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 rounded-2xl p-5 text-white shadow-md relative overflow-hidden">
+                <p class="text-[10px] font-bold uppercase tracking-widest text-purple-200">Total Saldo Kas Lazisna</p>
+                <h4 id="val-total" class="text-2xl sm:text-3xl font-black mt-1 tracking-tight">Rp0</h4>
+            </div>
+
+            <!-- Grid Saldo Per Kategori -->
+            <div id="dynamic-saldo-grid" class="grid grid-cols-2 gap-2.5">
+                <p class="col-span-2 text-center text-xs text-slate-400 py-4 animate-pulse">Menyelaraskan data saldo Lazisna...</p>
+            </div>
+
+            <!-- Tombol Cek Detail Laporan Spreadsheet -->
+            <a href="https://docs.google.com/spreadsheets/d/1xNm1b_eF6NhaiPKNkfu2_fb_CmgmdluB4r0xqdTsBzQ/edit?usp=drivesdk" 
+               target="_blank" rel="noopener noreferrer"
+               class="flex items-center justify-center gap-2 w-full py-3 bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-2xl text-xs font-bold transition border border-purple-100 no-underline">
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                <span>Cek Detail Laporan Lengkap</span>
+            </a>
+        </div>
+
+        <!-- Widget Kalender Hijriah (Embed) -->
+        <div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-3 overflow-hidden">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-moon text-purple-600 text-sm"></i>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Kalender Hijriah</h3>
+            </div>
+            
+            <div class="w-full flex justify-center overflow-hidden rounded-2xl bg-slate-50 border border-slate-100 p-2">
+                <iframe src="https://whitedays-islam.com/widget-embed?lang=id" width="100%" height="480" frameborder="0" scrolling="no" style="border:none; overflow:hidden; border-radius: 16px; box-shadow: 0 4px 12px rgba(74,90,67,0.08); background: transparent;"></iframe>
+            </div>
+        </div>
+
+        <!-- Profil Lembaga singkat -->
+        <div class="bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 space-y-2">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Mengenal LAZISNA</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                <strong>LAZISNA</strong> adalah Mitra Pengelola Zakat (MPZ) berafiliasi dengan <strong>Dompet Dhuafa</strong> di bawah naungan <strong>Yayasan Penkesoma Almey Annajah</strong>. Pengelolaan dana ZIS dilaksanakan melalui skema kemitraan syariah dan akuntabel.
+            </p>
+        </div>
+        <!-- Kabar & Penyaluran Lazisna -->
+        <div class="space-y-3">
+            <div class="flex justify-between items-center px-1">
+                <h2 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Kabar & Penyaluran Lazisna</h2>
+                <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full">Real-time</span>
+            </div>
+
+            <!-- Wadah Tempat Berita/Kabar Lazisna Ditarik Otomatis Berdasarkan Kategori -->
+            <div id="lazisna-news-container" class="space-y-5">
+                <div class="bg-white rounded-3xl p-6 text-center text-xs text-slate-400 py-8 animate-pulse">
+                    Memuat laporan penyaluran lazisna...
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+            <div class="w-12 h-1 bg-slate-200 rounded-full mx-auto sm:hidden mb-2"></div>
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-2xl transition-all duration-300 translate-y-20 opacity-0 z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-text">Nomor rekening disalin ke papan klip!</span>
+    </div>
+
+    <!-- Script Integration -->
+    <script>
+        const LAZISNA_SHEET_ID = "1krBmtuDAf26mS19F6_QX6ne5kBojnOXg2_netke742E";
+
+        async function loadSaldoDinamisOpenSheet() {
+            const openSheetUrl = `https://opensheet.elk.sh/${LAZISNA_SHEET_ID}/${encodeURIComponent("Saldo Lazisna")}`;
+            const containerGrid = document.getElementById('dynamic-saldo-grid');
+            const valTotalEl = document.getElementById('val-total');
+
+            try {
+                const response = await fetch(openSheetUrl);
+                const data = await response.json();
+
+                if (!data || data.length === 0) return;
+
+                const row = data[0];
+                let totalSum = 0;
+                let cardsHtml = '';
+
+                const parseNominal = (val) => {
+                    if (!val) return 0;
+                    if (typeof val === 'number') return val;
+                    let str = String(val).trim();
+                    str = str.replace(/[^0-9,-]+/g, ""); 
+                    str = str.replace(/\./g, "").replace(/,/g, ".");
+                    let num = parseFloat(str);
+                    return isNaN(num) ? 0 : num;
+                };
+
+                const formatIDR = (num) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(num);
+
+                for (const [namaKolom, nilaiSembuh] of Object.entries(row)) {
+                    if (!namaKolom) continue;
+
+                    const nominal = parseNominal(nilaiSembuh);
+                    totalSum += nominal;
+
+                    cardsHtml += `
+                        <div class="bg-slate-50 border border-slate-100 p-3.5 rounded-2xl">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase truncate" title="${namaKolom}">${namaKolom}</p>
+                            <h5 class="text-sm sm:text-base font-black text-slate-900 mt-1">${formatIDR(nominal)}</h5>
+                        </div>
+                    `;
+                }
+
+                if (containerGrid) containerGrid.innerHTML = cardsHtml;
+                if (valTotalEl) valTotalEl.innerText = formatIDR(totalSum);
+
+            } catch (err) {
+                console.error('Gagal mengambil data Saldo Lazisna:', err);
+            }
+        }
+
+                async function loadLazisnaData() {
+            const container = document.getElementById('lazisna-news-container');
+            if (!container) return;
+
+            container.innerHTML = `<div class="py-10 text-center animate-pulse text-[10px] font-black text-slate-400 uppercase tracking-widest">Sinkronisasi Kabar & Penyaluran Lazisna...</div>`;
+
+            try {
+                // Mengambil data langsung dari tab "Berita LAZISNA"
+                const res = await fetch(`https://opensheet.elk.sh/${LAZISNA_SHEET_ID}/${encodeURIComponent("Berita LAZISNA")}`);
+                const data = await res.json();
+                
+                if (data && data.length > 0) {
+                    container.innerHTML = ''; 
+                    // Mengelompokkan kategori secara dinamis persis seperti logika utama
+                    const categories = [...new Set(data.map(item => item.kategori || 'Lazisna'))];
+
+                    categories.forEach((cat) => {
+                        const items = data.filter(i => (i.kategori || 'Lazisna') === cat);
+                        const catSlug = slugify(cat);
+
+                        const section = document.createElement('div');
+                        section.className = 'bg-white rounded-3xl p-5 app-card-shadow border border-slate-100 animate-fadeIn mb-5';
+                        
+                        section.innerHTML = `
+                            <div class="flex justify-between items-center mb-4 gap-3">
+                                <h2 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">
+                                    ${cat}
+                                </h2>
+                                <button onclick="toggleSearch('${catSlug}')" class="bg-slate-100 p-2 rounded-xl active:scale-95 transition-all text-slate-600 hover:bg-slate-200 shadow-sm">
+                                    <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                                </button>
+                            </div>
+
+                            <!-- SEARCH INPUT -->
+                            <div id="search-${catSlug}" class="hidden mb-4">
+                                <input
+                                    oninput="filterCategory('${catSlug}', this.value)"
+                                    placeholder="Cari di ${cat}..."
+                                    class="w-full px-4 py-2.5 rounded-2xl text-xs text-slate-800 placeholder-slate-400 bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-sm"
+                                />
+                            </div>
+
+                            <div class="flex overflow-x-auto gap-4 no-scrollbar scroll-snap-x pb-2">
+                                ${items.map(item => {
+                                    const dataString = encodeURIComponent(JSON.stringify(item));
+                                    return `
+                                    <div
+                                        onclick="openModalDetail('${dataString}')"
+                                        class="snap-item post-card flex-none w-[72vw] sm:w-72 aspect-[4/5] bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 relative active:scale-[0.97] transition-all cursor-pointer"
+                                        data-category="${catSlug}"
+                                        data-title="${(item.judul || '').toLowerCase()}"
+                                        data-content="${(item.isi || '').toLowerCase()}"
+                                    >
+                                        <img src="${item.foto}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1532629345422-7515f3d16bb9?q=80&w=500'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent flex flex-col justify-end p-4 text-white">
+                                            <p class="text-[9px] font-bold uppercase tracking-wider mb-1 text-purple-300">${item.tanggal || ''}</p>
+                                            <h3 class="text-sm font-bold leading-snug mb-1 line-clamp-2">${item.judul || ''}</h3>
+                                            <p class="text-[11px] text-slate-300 line-clamp-2 font-normal">${item.isi || ''}</p>
+                                        </div>
+                                    </div>`;
+                                }).join('')}
+                            </div>`;
+                        container.appendChild(section);
+                    });
+                } else {
+                    container.innerHTML = `<div class="bg-white rounded-3xl p-6 text-center text-xs text-slate-400 py-6">Belum ada kabar penyaluran terbaru.</div>`;
+                }
+            } catch (e) {
+                console.error("Gagal memuat berita Lazisna:", e);
+                container.innerHTML = `<div class="bg-white rounded-3xl p-6 text-center text-xs text-rose-500 py-6">Gagal menyinkronkan data dari Google Sheets.</div>`;
+            }
+        }
+
+        // Fungsi Helper Pencarian, Filter & Slug
+        function toggleSearch(category) {
+            const el = document.getElementById(`search-${category}`);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        function filterCategory(category, keyword) {
+            keyword = keyword.toLowerCase();
+            document.querySelectorAll(`.post-card[data-category="${category}"]`).forEach(card => {
+                const title = card.dataset.title || '';
+                const content = card.dataset.content || '';
+                const match = title.includes(keyword) || content.includes(keyword);
+                card.style.display = match ? '' : 'none';
+            });
+        }
+
+        function slugify(text) {
+            return text.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-');
+        }
+
+                function openModalTransferBank() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="space-y-4 text-left">
+                    <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900">Transfer Bank & Formulir</h3>
+                            <p class="text-[10px] text-slate-400">Pilih jenis donasi untuk konfirmasi</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLScm-cxENepfYvJNfqUbfpN0JjnRTxEGcRdxTzf-GzzpRpUYXQ/viewform" target="_blank" class="flex items-center justify-between p-3 bg-slate-50 hover:bg-purple-50 rounded-xl border border-slate-200 transition group no-underline">
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-purple-700">Formulir Zakat Maal</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-purple-600"></i>
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0firAlTYos0lic-xQC9sa9C-6dT9C4ZN8sRtQ9MSOgW55XA/viewform" target="_blank" class="flex items-center justify-between p-3 bg-slate-50 hover:bg-purple-50 rounded-xl border border-slate-200 transition group no-underline">
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-purple-700">Formulir Zakat Profesi</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-purple-600"></i>
+                        </a>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4joTjR26Gg-CPnaH1xGRoh4aFlU53uHEmfXv8iseo-4dqcQ/viewform" target="_blank" class="flex items-center justify-between p-3 bg-slate-50 hover:bg-purple-50 rounded-xl border border-slate-200 transition group no-underline">
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-purple-700">Formulir Infaq & Sedekah</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-purple-600"></i>
+                        </a>
+                    </div>
+
+                    <!-- Tombol Konfirmasi Donasi dipindah ke sini -->
+                    <div class="pt-2 border-t border-slate-100">
+                        <button onclick="openModalKonfirmasiZakat()" class="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-xs font-bold shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-receipt"></i>
+                            <span>Konfirmasi Bukti Transfer</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+
+        function openModalSetorTunai() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="space-y-4 text-left">
+                    <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900">Setor Tunai Langsung</h3>
+                            <p class="text-[10px] text-slate-400">Kunjungi kantor layanan kami</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <a href="https://maps.app.goo.gl/BBNyu8ESxFWiMXdC6" target="_blank" class="flex items-center justify-between p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 transition group no-underline">
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-700">Peta Lokasi Kantor Lazisna</span>
+                            <i class="fa-solid fa-map-location-dot text-xs text-slate-400 group-hover:text-emerald-600"></i>
+                        </a>
+                        <a href="https://wa.me/6283817981879?text=Assalamu'alaikum%20Admin%20Lazisna,%20saya%20ingin%20bertanya%20terkait%20layanan%20setor%20tunai." target="_blank" class="flex items-center justify-between p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 transition group no-underline">
+                            <span class="text-xs font-bold text-slate-800 group-hover:text-emerald-700">Hubungi Admin Layanan</span>
+                            <i class="fa-brands fa-whatsapp text-xs text-slate-400 group-hover:text-emerald-600"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function openModalJemputZakat() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="space-y-4 text-left">
+                    <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900">Layanan Jemput Zakat</h3>
+                            <p class="text-[10px] text-slate-400">Petugas siap hadir ke lokasi Anda</p>
+                        </div>
+                    </div>
+
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScF-WvVPjQOW5Of3dnAdBkPUtzvyU0oEHRYZVsxjMjbr_kFLw/viewform" target="_blank" class="flex items-center justify-center gap-2 w-full bg-amber-600 text-white py-3 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md active:scale-95 transition no-underline">
+                        <i class="fa-solid fa-paper-plane text-xs"></i> Pesan Layanan Jemput
+                    </a>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function openModalRekening() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mx-auto text-xl font-bold">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900">Rekening Resmi BRI Lazisna</h3>
+                    <p class="text-xs text-slate-500">Salurkan zakat, infaq, dan sedekah melalui rekening resmi.</p>
+                    
+                    <div class="bg-slate-50 p-4 rounded-2xl text-left border border-slate-100 space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-700">Bank BRI</span>
+                            <span class="font-mono bg-white px-2.5 py-1 rounded-lg text-slate-900 font-bold border">608001053275533</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 italic">a.n. LAZISNA</p>
+                    </div>
+
+                    <button onclick="copyAccNumber('608001053275533')" class="w-full py-3 bg-purple-600 text-white rounded-2xl text-xs font-bold shadow-md hover:bg-purple-700 transition">
+                        Salin Rekening Bank BRI
+                    </button>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function openModalKonfirmasiZakat() {
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <div class="space-y-4 text-left">
+                    <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-receipt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900">Konfirmasi Zakat & Sedekah</h3>
+                            <p class="text-[10px] text-slate-400">Kirim bukti transfer ke amil kami</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Setelah melakukan transfer donasi, silakan lakukan konfirmasi via WhatsApp dengan menyertakan foto bukti transfer, nama donatur, dan jenis donasi.
+                    </p>
+
+                    <a href="https://wa.me/6283817981879?text=KONFIRMASI%20DONASI%0ANama:%20%0ANominal:%20%0AJenis%20(Zakat/Infaq/Sedekah):%20" target="_blank" class="flex items-center justify-center gap-2 w-full bg-emerald-600 text-white py-3 rounded-2xl font-bold text-xs uppercase tracking-wider shadow-md active:scale-95 transition no-underline">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Konfirmasi via WhatsApp
+                    </a>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function openModalDetail(encodedData) {
+            let item;
+            try { item = JSON.parse(decodeURIComponent(encodedData)); } catch (e) { return; }
+
+            const content = document.getElementById('modal-content');
+            
+            let waButton = '';
+            if (item.whatsapp) {
+                let wa = item.whatsapp.toString().replace(/\D/g, '');
+                if (wa.startsWith('0')) wa = '62' + wa.slice(1);
+                waButton = `
+                    <a href="https://wa.me/${wa}" target="_blank" class="flex items-center justify-center gap-2 w-full bg-emerald-600 text-white py-3 rounded-2xl font-bold text-xs uppercase shadow-md active:scale-95 transition no-underline">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Hubungi Amil Lazisna
+                    </a>`;
+            }
+
+            content.innerHTML = `
+                <div class="space-y-3 text-left">
+                    <img src="${item.foto}" class="w-full h-48 object-cover rounded-2xl mb-2" onerror="this.src='https://images.unsplash.com/photo-1532629345422-7515f3d16bb9?q=80&w=600'">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-bold bg-purple-100 text-purple-800 px-2.5 py-1 rounded-full">${item.kategori || 'Lazisna'}</span>
+                        <span class="text-[11px] text-slate-400 font-medium">${item.tanggal || ''}</span>
+                    </div>
+                    <h3 class="text-base font-bold text-slate-900 leading-snug">${item.judul || ''}</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed whitespace-pre-line">${item.isi || ''}</p>
+                    ${waButton ? `<div class="pt-3 border-t border-slate-100">${waButton}</div>` : ''}
+                </div>
+            `;
+
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+        }
+
+        function copyAccNumber(num) {
+            navigator.clipboard.writeText(num);
+            const toast = document.getElementById('toast');
+            if (toast) {
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3000);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal-backdrop').classList.add('hidden');
+        }
+
+        window.addEventListener('load', () => {
+            loadSaldoDinamisOpenSheet();
+            loadLazisnaData();
+        });
+    </script>
+</body>
+</html>
